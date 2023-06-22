@@ -6,13 +6,15 @@ import { CreateHotelDto } from './dto/create-hotel.dto';
 export class HotelsController {
   constructor(private readonly hotelsService: HotelsService) {}
 
-  @Post()
+  @Post('/hotel')
   create(@Body() createHotelDto: CreateHotelDto) {
+    console.log('CREATE HOTEL');
     return this.hotelsService.create(createHotelDto);
   }
 
-  @Get()
+  @Get('/hotels')
   findAll() {
+    console.log('hotels!!');
     return this.hotelsService.findAll();
   }
 }

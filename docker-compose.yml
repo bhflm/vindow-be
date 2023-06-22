@@ -1,18 +1,23 @@
 version: '3'
 
 services:
-  app:
+  api:
     image: vindow
     build:
       context: .
       dockerfile: Dockerfile
       target: deploy
-  mongo:
-    image: mongo
+    env_file:
+      - .env
+    depends_on:
+      - mongodb
+      
+  mongodb:
+    image: mongo:latest
     restart: always
-    environment:
-      MONGODB_USER: vindow-be
-      MONGODB_DATABASE: vindow-be-local
-      MONGODB_PASS: vindowpw
+    env_file:
+      - .env
     ports:
-      - "3000:3000"
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
