@@ -9,9 +9,11 @@ services:
       target: deploy
     env_file:
       - .env
+    ports:
+      - 3000:3000
     depends_on:
       - mongodb
-      
+
   mongodb:
     image: mongo:latest
     restart: always
@@ -21,3 +23,6 @@ services:
       - 27017:27017
     volumes:
       - mongodb_data_container:/data/db
+
+volumes:
+    mongodb_data_container:
