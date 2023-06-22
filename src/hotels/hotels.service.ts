@@ -11,8 +11,21 @@ export class HotelsService {
     private hotelModel: Model<HotelDocument>,
   ) {}
 
+  // Run seed for local data ?
+  async onModuleInit() {
+    try {
+        const newHotel = {
+          name: 'yourname'
+        };
+        const hotel = await this.hotelModel.create(newHotel); // this method creates new user in database
+        console.log(hotel);
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async create(createHoteltDto: CreateHotelDto): Promise<Hotel> {
-    const createdHotel = new this.hotelModel(CreateHotelDto);
+    const createdHotel = new this.hotelModel(createHoteltDto);
     return createdHotel.save();
   }
 

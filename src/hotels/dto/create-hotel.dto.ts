@@ -1,1 +1,3 @@
-export class CreateHotelDto {}
+export class CreateHotelDto {
+  name: string;
+}
