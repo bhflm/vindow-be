@@ -11,14 +11,14 @@ export class HotelsService {
     private hotelModel: Model<HotelDocument>,
   ) {}
 
-  // Run seed for local data ?
+  // Run seed for local data, only on local env. 
   async onModuleInit() {
     try {
         const newHotel = {
           name: 'yourname'
         };
         const hotel = await this.hotelModel.create(newHotel); // this method creates new user in database
-        console.log(hotel);
+        // console.log(hotel);
     } catch (error) {
       throw error;
     }

@@ -7,7 +7,7 @@ export class InternalSearchController {
   constructor(private readonly internalSearchService: InternalSearchService) {}
 
   
-  @Get('/internal-search')
+  @Get('/internal-search/:name')
   @ApiOperation({ summary: 'Gets data from Hotels, returning a list of internal hotels data'})
   @ApiParam({ name: 'name', required: false, description: 'Hotel name' })
   @ApiQuery({ name: 'address', required: false, description: 'Hotel address' })
