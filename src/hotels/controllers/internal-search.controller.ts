@@ -1,5 +1,5 @@
 import { Controller, Get, Query } from '@nestjs/common';
-import { ApiOperation, ApiResponse, ApiQuery } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiQuery, ApiParam } from '@nestjs/swagger';
 import { InternalSearchService } from '../services/internal-search.service';
 
 @Controller('hotels')
@@ -9,7 +9,8 @@ export class InternalSearchController {
   
   @Get('/internal-search')
   @ApiOperation({ summary: 'Gets data from Hotels, returning a list of internal hotels data'})
-  @ApiQuery({ name: 'address', required: false, description: 'Hotel Address' })
+  @ApiParam({ name: 'name', required: false, description: 'Hotel name' })
+  @ApiQuery({ name: 'address', required: false, description: 'Hotel address' })
   @ApiResponse({ status: 200, description: 'Hotels list' })
   @ApiResponse({ status: 401, description: 'Unauthorized' })
   

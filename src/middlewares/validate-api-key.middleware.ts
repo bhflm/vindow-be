@@ -17,12 +17,12 @@ export class ValidateAPIKey implements NestMiddleware {
 
 
       if (!APIKey) {
-         throw new BadRequestException(`'${X_API_KEY_HEADER}' is missing`);
+         throw new HttpException(`'${X_API_KEY_HEADER}' is missing`, HttpStatus.UNAUTHORIZED);
       }
 
       if (!this.isValidAPIKey(APIKey)) {
          // @@TODO: Refactor errors module
-         throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+         throw new HttpException(`'${X_API_KEY_HEADER}' is not valid`, HttpStatus.UNAUTHORIZED);
       }
 
       next();

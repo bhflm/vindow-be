@@ -1,16 +1,22 @@
-
-import { Module } from '@nestjs/common';
+import { Module, MiddlewareConsumer } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { HotelsModule } from './hotels/hotels.module';
+import { LoggerModule } from './logger/logger.module';
+import { RequestLoggerMiddleware } from './middlewares/request-logger.middleware';
 
 const MONGODB_URL = process.env.MONGODB_URL || 'mongodb://127.0.0.1:27017/';
 
 @Module({
   imports: [
     MongooseModule.forRoot(MONGODB_URL),
-    HotelsModule
+    HotelsModule,
+    LoggerModule
   ],
   controllers: [],
-  providers: [],
+  providers: [RequestLoggerMiddleware],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(RequestLoggerMiddleware).forRoutes('*');
+  }
+}
