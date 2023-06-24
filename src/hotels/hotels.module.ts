@@ -1,4 +1,5 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer,  Module, NestModule } from '@nestjs/common';
+import { ValidateAPIKey } from 'src/middlewares/validate-api-key.middleware';
 import { ExternalSearchController } from './controllers/external-search.controller';
 import { InternalSearchController } from './controllers/internal-search.controller';
 import { ExternalSearchService } from './services/external-search.service';
@@ -15,4 +16,8 @@ import { MongooseModule } from "@nestjs/mongoose";
   ]
 })
 
-export class HotelsModule {}
+export class HotelsModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(ValidateAPIKey).forRoutes('*');
+  }
+}
