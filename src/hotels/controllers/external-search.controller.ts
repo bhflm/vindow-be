@@ -14,10 +14,14 @@ export class ExternalSearchController {
   @ApiResponse({ status: 401, description: 'Unauthorized' })
   async search(@Param('hotel') hotel: string, @Query('address') address?: string) {
     try {
-      const hotelsDataResponse = await this.externalSearchService.searchHotels(hotel, address);
+      let hotelsDataResponse;
+      if (address) {
+        hotelsDataResponse = await this.externalSearchService.searchHotels(hotel, address);
+      } else {
+        hotelsDataResponse = await this.externalSearchService.searchHotels(hotel);
+      }
       return hotelsDataResponse;
     } catch(err) {
-      console.error('external search controller error: ', err);
       throw new Error(err);
     }
   }
