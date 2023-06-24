@@ -2,7 +2,7 @@ import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import {InjectModel} from "@nestjs/mongoose";
 import { Hotel, HotelDocument } from '../schemas/hotels.schema';
-import { CreateHotelDto } from '../dto/create-hotel.dto';
+import { CreateInternalHotelDto } from '../dto/create-internal-hotel.dto';
 
 @Injectable()
 export class InternalSearchService {
@@ -11,21 +11,24 @@ export class InternalSearchService {
     private hotelModel: Model<HotelDocument>,
   ) {}
 
-  // Run seed for local data ?
   async onModuleInit() {
     try {
-        const newHotel = {
-          name: 'yourname'
-        };
-        const hotel = await this.hotelModel.create(newHotel); // this method creates new user in database
-        console.log(hotel);
+        // If run locally, seed db
+        if (!process.env.ENV) {
+          // const newHotel = {
+          //   name: 'asd'
+          // };
+          // await this.hotelModel.create(newHotel); // this method creates new user in database          
+          // const hotels = await this.hotelModel.find().exec();
+          console.log('hotels!: ');
+        }
     } catch (error) {
       throw error;
     }
   }
 
-  async create(createHoteltDto: CreateHotelDto): Promise<Hotel> {
-    const createdHotel = new this.hotelModel(createHoteltDto);
+  async create(createInternalHoteltDto: CreateInternalHotelDto): Promise<Hotel> {
+    const createdHotel = new this.hotelModel(createInternalHoteltDto);
     return createdHotel.save();
   }
 

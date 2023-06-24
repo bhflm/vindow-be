@@ -1,7 +1,6 @@
 import { Controller, Get, Query, Param } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiQuery, ApiParam } from '@nestjs/swagger';
 import { ExternalSearchService } from '../services/external-search.service';
-// import { serializeSearchResponse } from '../serializer/external-search.serializer';
 
 @Controller('hotels/external-search')
 export class ExternalSearchController {
@@ -15,7 +14,6 @@ export class ExternalSearchController {
   @ApiResponse({ status: 401, description: 'Unauthorized' })
   async search(@Param('hotel') hotel: string, @Query('address') address?: string) {
     try {
-      console.log('EXTERNAL SEARCH', hotel, address);
       const hotelsDataResponse = await this.externalSearchService.searchHotels(hotel, address);
       return hotelsDataResponse;
     } catch(err) {
