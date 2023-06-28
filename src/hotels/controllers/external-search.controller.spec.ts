@@ -21,11 +21,17 @@ describe('ExternalSearchController', () => {
 
       const hotel = 'Sheraton';
 
-      const expectedResult = {
+      const expectedResult = [{
         name: "Sheraton Buenos Aires Hotel & Convention Center",
         address: "San Martin 1225 1275, C1104 CABA, Argentina",
         uid: "ChIJQS4SGrXKvJURN_6lyZr8cig"
-      };
+      },
+      {
+        name: "Sheraton Pilar Hotel & Convention Center",
+        address: "Panamericana Km 49.5, B1629 Pilar, Provincia de Buenos Aires, Argentina",
+        uid: "ChIJX-EuSFCcvJURKIUuJxfjoCQ"
+      }
+    ];
 
       jest.spyOn(service, 'searchHotels').mockResolvedValue(expectedResult);
 

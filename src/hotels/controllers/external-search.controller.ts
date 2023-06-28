@@ -17,7 +17,7 @@ export class ExternalSearchController {
       let hotelsDataResponse;
       if (address) {
         hotelsDataResponse = await this.externalSearchService.searchHotels(hotel, address);
-      } else {
+      } else { 
         hotelsDataResponse = await this.externalSearchService.searchHotels(hotel);
       }
       return hotelsDataResponse;
