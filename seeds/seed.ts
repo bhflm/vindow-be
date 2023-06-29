@@ -97,22 +97,24 @@ const seed = async () => {
 
     const hotelsData = loadHotels();
 
+    console.log('hotels data: ', hotelsData);
+
     hotelsData.forEach(async (h) => {
       const newHotel = new HotelModel(h);
-      await newHotel.save();
-
-      const imagesToCreate = h.images.map(i => {
-        const newImage = new ImageModel({ hotel: newHotel._id, ...i})
+      // console.log('Hotel: ', newHotel);
+      const newHotelimages = h.images.map(i => {
+        const newImage = new ImageModel(i);
         newImage.save();
+        return newImage;
       });
-      await Promise.all(imagesToCreate);
+      await Promise.all(newHotelimages);
+      // console.log('Images: ', newHotelimages);
+
+      newHotel.images = newHotelimages;
+      await newHotel.save();
     });      
 
-    const seededHotels = await HotelModel.find({});
-    const seededImages = await ImageModel.find({});
-
-
-    console.log(`[Seed] : [OK] populated with seed data -  Hotels: ${seededHotels.length}, Images; ${seededImages.length}`);
+    console.log(`[Seed] : [OK] populated with seed data`);
 
     process.exit(0);
   } catch (error) {

@@ -1,4 +1,4 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Query, Param } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiQuery, ApiParam } from '@nestjs/swagger';
 import { InternalSearchService } from '../services/internal-search.service';
 
@@ -14,7 +14,7 @@ export class InternalSearchController {
   @ApiResponse({ status: 200, description: 'Hotels list' })
   @ApiResponse({ status: 401, description: 'Unauthorized' })
   
-  search(@Query('hotelName') hotelName: string, @Query('address') address?: string) {
-    return this.internalSearchService.findAll(hotelName, address);
+  search(@Param('name') name: string, @Query('address') address?: string) {
+    return this.internalSearchService.findAll(name, address);
   }
 }

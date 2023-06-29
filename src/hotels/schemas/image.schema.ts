@@ -18,8 +18,8 @@ export class Image {
   @Prop()
   height: number;
 
-  @Prop({ type: Types.ObjectId, ref: () => Hotel })
-  hotel: Hotel;
+  @Prop({ type: Types.ObjectId, ref: 'Hotel' })
+  hotel: Types.ObjectId;
 }
 
 export const ImageSchema = SchemaFactory.createForClass(Image);
