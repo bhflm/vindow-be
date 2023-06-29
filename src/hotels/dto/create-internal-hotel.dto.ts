@@ -1,8 +1,5 @@
 import { InternalHotel } from "../interfaces/hotels.interface";
-
-export class CreateInternalHotelDto {
+export class CreateInternalHotelDto implements InternalHotel {
   readonly name: string;
   readonly address: string;
-  readonly rating: number;
-  readonly amenities: string[];
 }

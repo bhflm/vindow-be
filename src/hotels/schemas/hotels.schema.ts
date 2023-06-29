@@ -1,6 +1,5 @@
-import {Prop, Schema, SchemaFactory} from '@nestjs/mongoose';
-import { Document, Types } from 'mongoose';
-import { Image } from './image.schema';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
 
 export type HotelDocument = Hotel & Document;
 
@@ -11,9 +10,6 @@ export class Hotel {
 
     @Prop()
     address: string;
-  
-    @Prop({ type: [{ type: Types.ObjectId, ref: 'Image' }] })
-    images: Image[];
 }
 
 export const HotelSchema = SchemaFactory.createForClass(Hotel);

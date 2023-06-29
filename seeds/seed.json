@@ -1,0 +1,190 @@
+[
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "San Martín 1225 1275, C1104 CABA, Argentina",
+    "geometry": {
+      "location": {
+        "lat": -34.5930606,
+        "lng": -58.3724309
+      },
+      "viewport": {
+        "northeast": {
+          "lat": -34.59164422010728,
+          "lng": -58.37125397010728
+        },
+        "southwest": {
+          "lat": -34.59434387989272,
+          "lng": -58.37395362989272
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
+    "icon_background_color": "#909CE1",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
+    "name": "Sheraton Buenos Aires Hotel & Convention Center",
+    "photos": [
+      {
+        "height": 320,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/102552147563690516031\">Sheraton Buenos Aires Hotel &amp; Convention Center</a>"
+        ],
+        "photo_reference": "AZose0l4Ownq9gwFO_AOiXl1IhmAtIeF2BO20cOyJVNJF7VfNJF_RXy1g84xVfs0A9FtOmtoYqv9lf6h8CDpgkp3W-h5e15qJHB-dc3ddtOwBOjSU6wdhzA9lwPzSfIQyBZQGonSA-hUg_7ln19AHYfK6yMCBHG6qMB3hydgvIIpv3vfHRc",
+        "width": 480
+      }
+    ],
+    "place_id": "ChIJQS4SGrXKvJURN_6lyZr8cig",
+    "plus_code": {
+      "compound_code": "CJ4H+Q2 Buenos Aires",
+      "global_code": "48Q3CJ4H+Q2"
+    },
+    "rating": 4.5,
+    "reference": "ChIJQS4SGrXKvJURN_6lyZr8cig",
+    "types": [
+      "lodging",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 10553
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "Panamericana Km 49.5, B1629 Pilar, Provincia de Buenos Aires, Argentina",
+    "geometry": {
+      "location": {
+        "lat": -34.4442425,
+        "lng": -58.86503310000001
+      },
+      "viewport": {
+        "northeast": {
+          "lat": -34.44284064999999,
+          "lng": -58.86373502010728
+        },
+        "southwest": {
+          "lat": -34.44580924999999,
+          "lng": -58.86643467989272
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
+    "icon_background_color": "#909CE1",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
+    "name": "Sheraton Pilar Hotel & Convention Center",
+    "photos": [
+      {
+        "height": 1366,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/100267519879803618892\">Sheraton Pilar Hotel &amp; Convention Center</a>"
+        ],
+        "photo_reference": "AZose0mhAI5oG7nMpeUVtxAMtUV84_InsoYFGFFXJ57hqn5p_Gpc2DBs5kxCJceVQBPl87zNfBOITvCjXENje9N3WMCjUTFUYzLgOu8Ccv4vwYPXIAo5Ut5uKIFjSa6hjR2YlO1zD-z69oHGkiCMDo7lvTYQHHj0XXcWJehoEIjDKwy_vixu",
+        "width": 2048
+      }
+    ],
+    "place_id": "ChIJX-EuSFCcvJURKIUuJxfjoCQ",
+    "plus_code": {
+      "compound_code": "H44M+8X Pilar, Buenos Aires Province",
+      "global_code": "48Q3H44M+8X"
+    },
+    "rating": 4.3,
+    "reference": "ChIJX-EuSFCcvJURKIUuJxfjoCQ",
+    "types": [
+      "lodging",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 5505
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "Leandro N. Alem 4221, B7600 Mar del Plata, Provincia de Buenos Aires, Argentina",
+    "geometry": {
+      "location": {
+        "lat": -38.0318296,
+        "lng": -57.53971310000001
+      },
+      "viewport": {
+        "northeast": {
+          "lat": -38.03056287010727,
+          "lng": -57.53819402010728
+        },
+        "southwest": {
+          "lat": -38.03326252989272,
+          "lng": -57.54089367989273
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
+    "icon_background_color": "#909CE1",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
+    "name": "Sheraton Mar del Plata Hotel",
+    "photos": [
+      {
+        "height": 480,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/109872217718742351183\">Sheraton Mar del Plata Hotel</a>"
+        ],
+        "photo_reference": "AZose0kXCbTMo1y3KA7JCOlaxnsGRw-qMqp1-TIRRlWYYQcBJ-DUpxyuocbgUglMib8GD2tt33dj828CUI5emcPjMgLNZKruomGwyODDGYvvYPSqVQa9ZeXiutFWHsPAAD0NZ3ZQoXP4PUKPnWnNj41fmTW3aiTYa-AM0YYQ43lTNeHKq2P9",
+        "width": 320
+      }
+    ],
+    "place_id": "ChIJv4LtX87dhJURMdesXbvwrpI",
+    "plus_code": {
+      "compound_code": "XF96+74 Mar del Plata, Buenos Aires Province",
+      "global_code": "48H4XF96+74"
+    },
+    "rating": 4.4,
+    "reference": "ChIJv4LtX87dhJURMdesXbvwrpI",
+    "types": [
+      "lodging",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 4448
+  },
+  {
+    "business_status": "OPERATIONAL",
+    "formatted_address": "Av. La Marina 15, Viña del Mar, Valparaíso, Chile",
+    "geometry": {
+      "location": {
+        "lat": -33.0211281,
+        "lng": -71.5680461
+      },
+      "viewport": {
+        "northeast": {
+          "lat": -33.01987267010727,
+          "lng": -71.56659162010729
+        },
+        "southwest": {
+          "lat": -33.02257232989272,
+          "lng": -71.56929127989272
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
+    "icon_background_color": "#909CE1",
+    "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
+    "name": "Sheraton Miramar Hotel & Convention Center",
+    "photos": [
+      {
+        "height": 320,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/116826265257093952355\">Sheraton Miramar Hotel &amp; Convention Center</a>"
+        ],
+        "photo_reference": "AZose0nucSnOfKJA_6MmUzQsKdVLoCjUumLmLJtzcrJnu5CKpPjo4OpVa-M2RjdOWqE1w5ZTbLA7H3f_tw5AGjS1IfooKLQrphb4t4Bb4PKKnCW_Jeirs1wxLk2F13Mt7o-S1iDslsX54gFSB5K-xOQyHy21a4W9S2C9Go0729QBCqouT-I8",
+        "width": 480
+      }
+    ],
+    "place_id": "ChIJ3VKwyv7diZYRgofFaFv2LHI",
+    "plus_code": {
+      "compound_code": "XCHJ+GQ Viña del Mar, Chile",
+      "global_code": "47RCXCHJ+GQ"
+    },
+    "rating": 4.6,
+    "reference": "ChIJ3VKwyv7diZYRgofFaFv2LHI",
+    "types": [
+      "lodging",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 3097
+  }
+]

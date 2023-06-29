@@ -1,5 +1,6 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
+import { Hotel } from './hotels.schema';
 
 export type ImageDocument = Image & Document;
 
@@ -16,6 +17,9 @@ export class Image {
 
   @Prop()
   height: number;
+
+  @Prop({ type: Types.ObjectId, ref: () => Hotel })
+  hotel: Hotel;
 }
 
 export const ImageSchema = SchemaFactory.createForClass(Image);
