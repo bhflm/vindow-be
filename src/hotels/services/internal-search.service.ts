@@ -1,8 +1,9 @@
 import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import {InjectModel} from "@nestjs/mongoose";
+import { InternalHotel } from '../interfaces/hotels.interface'; // @@ todo: correct return output ?? 
 import { Hotel, HotelDocument } from '../schemas/hotels.schema';
-import { CreateInternalHotelDto } from '../dto/create-internal-hotel.dto';
+import { serializeFindAllResponse } from '../serializer/internal-search.serializer';
 
 type QueryFilter<T> = {
   [K in keyof T]?: { $regex: RegExp };
@@ -12,15 +13,10 @@ type QueryFilter<T> = {
 export class InternalSearchService {
   constructor(
     @InjectModel(Hotel.name)
-    private hotelModel: Model<HotelDocument>,
+    private hotelModel: Model<Hotel>,
   ) {}
 
-  async create(createInternalHoteltDto: CreateInternalHotelDto): Promise<Hotel> {
-    const createdHotel = new this.hotelModel(createInternalHoteltDto);
-    return createdHotel.save();
-  }
-
-  async findAll(name: string, address?: string): Promise<Hotel[]> {
+  async findAll(name: string, address?: string): Promise<InternalHotel[]> {
 
     const query: QueryFilter<Hotel> =  { name: { $regex: new RegExp(name, 'i') } };
 
@@ -28,6 +24,9 @@ export class InternalSearchService {
       query.address = { $regex: new RegExp(address, 'i') };
     }
 
-    return this.hotelModel.find(query).populate('images').exec();
+    const hotelDocuments: HotelDocument[] = await this.hotelModel.find(query).populate('images').exec();
+    const serializedResponse = serializeFindAllResponse(hotelDocuments);
+
+    return serializedResponse;
   }
 }

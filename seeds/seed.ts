@@ -54,8 +54,6 @@ interface HotelWithImages extends Hotel {
   images: Image[]
 }
 
-type MongoInstance = typeof mongoose;
-
 function loadHotels(): HotelWithImages[] {
   const seedPath = path.resolve(__dirname, 'seed.json');
   const rawData = fs.readFileSync(seedPath, 'utf8');
@@ -73,52 +71,40 @@ function loadHotels(): HotelWithImages[] {
   return hotels;
 }
 
-async function setupDb(): Promise<MongoInstance> {
-  try {
-    const mongo = await mongoose.connect(MONGODB_URL);
-  
-    return mongo
-  } catch(err) {
-    console.error('[Seed] :  Error while starting connection: ', err);
-    throw new Error(err);
-  }
-};
-
 const seed = async () => {
   try {
     console.log(`[Seed] : running...`);
-    await setupDb();
+    await mongoose.connect(MONGODB_URL);
 
     const HotelModel = mongoose.model('Hotel', HotelSchema);
     const ImageModel = mongoose.model('Image', ImageSchema);
-
+    
     await HotelModel.deleteMany({});
     await ImageModel.deleteMany({});
 
     const hotelsData = loadHotels();
 
-    console.log('hotels data: ', hotelsData);
+    for (const hotelData of hotelsData) {
+      const newHotel = new HotelModel(hotelData);
 
-    hotelsData.forEach(async (h) => {
-      const newHotel = new HotelModel(h);
-      // console.log('Hotel: ', newHotel);
-      const newHotelimages = h.images.map(i => {
-        const newImage = new ImageModel(i);
-        newImage.save();
-        return newImage;
-      });
-      await Promise.all(newHotelimages);
-      // console.log('Images: ', newHotelimages);
-
-      newHotel.images = newHotelimages;
+      const newHotelImages = await Promise.all(
+        hotelData.images.map(async image => {
+          const newImg = new ImageModel({ hotel: newHotel._id, ...image });
+          await newImg.save();
+          return newImg;
+        })
+      );
+      
+      newHotel.images = newHotelImages;
       await newHotel.save();
-    });      
-
-    console.log(`[Seed] : [OK] populated with seed data`);
+    }
+      
+    const hotelsAll = await HotelModel.find({}).exec();
+    console.log(`[Seed] : [OK] populated with seed data, ${hotelsAll.length}`);
 
     process.exit(0);
   } catch (error) {
-    console.error("Seed] : [ERR] failed to seed database");
+    console.error(`Seed] : [ERR] failed to seed database ${error}`);
     process.exit(1);
   }
 };

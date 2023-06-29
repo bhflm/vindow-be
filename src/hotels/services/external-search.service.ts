@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Injectable } from '@nestjs/common';
 import { serializeSearchResponse } from '../serializer/external-search.serializer';
-import util from 'util';
+
 @Injectable()
 export class ExternalSearchService {
   private readonly API_KEY = process.env.GOOGLE_PLACES_API_KEY;
@@ -14,12 +14,11 @@ export class ExternalSearchService {
     const qs = address ? hotelName + address : hotelName;
 
     const query = `query=${encodeURIComponent(qs)}`;
-    console.log('query: ', query);
+
     const url = `${baseUrl}?${query}&key=${this.API_KEY}`;
 
     try {
       const { data } = await axios.get(url);
-      console.log('data: ', JSON.stringify(data));
       const externalHotelsResponse = serializeSearchResponse(data);
       return externalHotelsResponse;
     } catch (error) {

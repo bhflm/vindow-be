@@ -1,5 +1,5 @@
 import { ExternalHotel } from '../interfaces/hotels.interface';
-
+import { normalizeString } from './utils';
 interface HotelsDataServiceResponse {
   name: string;
   place_id: string;
@@ -8,10 +8,6 @@ interface HotelsDataServiceResponse {
 
 interface ExternalServiceResponse {
   results: HotelsDataServiceResponse[]
-}
-
-function normalizeString(str: string) {
-  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 
 function serializeExternalHotel (hotel: HotelsDataServiceResponse): ExternalHotel {
