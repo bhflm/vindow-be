@@ -1,13 +1,10 @@
 import { ExternalHotel } from '../interfaces/hotels.interface';
 import { normalizeString } from './utils';
+
 interface HotelsDataServiceResponse {
   name: string;
   place_id: string;
   formatted_address: string;
-}
-
-interface ExternalServiceResponse {
-  results: HotelsDataServiceResponse[]
 }
 
 function serializeExternalHotel (hotel: HotelsDataServiceResponse): ExternalHotel {
@@ -19,7 +16,6 @@ function serializeExternalHotel (hotel: HotelsDataServiceResponse): ExternalHote
   };
 };
 
-export function serializeSearchResponse(externalSearchResponse: ExternalServiceResponse): ExternalHotel[] {
-  const { results } = externalSearchResponse;
-  return results.map(serializeExternalHotel);
+export function serializeSearchResponse(dataRecords: HotelsDataServiceResponse[]): ExternalHotel[] {
+  return dataRecords.map(serializeExternalHotel);
 }
