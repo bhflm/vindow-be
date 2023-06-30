@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { ExternalHotel } from '../interfaces/hotels.interface';
 import { ExternalSearchController } from './external-search.controller';
 import { ExternalSearchService } from '../services/external-search.service';
 
@@ -21,7 +22,7 @@ describe('ExternalSearchController', () => {
 
       const hotel = 'Sheraton';
 
-      const expectedResult = [{
+      const expectedResult: ExternalHotel[] = [{
         name: "Sheraton Buenos Aires Hotel & Convention Center",
         address: "San Martin 1225 1275, C1104 CABA, Argentina",
         uid: "ChIJQS4SGrXKvJURN_6lyZr8cig"
@@ -30,6 +31,11 @@ describe('ExternalSearchController', () => {
         name: "Sheraton Pilar Hotel & Convention Center",
         address: "Panamericana Km 49.5, B1629 Pilar, Provincia de Buenos Aires, Argentina",
         uid: "ChIJX-EuSFCcvJURKIUuJxfjoCQ"
+      },
+      {
+        name: "Sheraton Mar del Plata Hotel",
+        address: "Leandro N. Alem 4221, B7600 Mar del Plata, Provincia de Buenos Aires, Argentina",
+        uid: "ChIJv4LtX87dhJURMdesXbvwrpI",
       }
     ];
 
@@ -47,11 +53,11 @@ describe('ExternalSearchController', () => {
       const hotel = 'Sheraton';
       const address = 'pilar';
 
-      const expectedResult = {
+      const expectedResult: ExternalHotel[] = [{
         name: "Sheraton Pilar Hotel & Convention Center",
         address: "Panamericana Km 49.5, B1629 Pilar, Provincia de Buenos Aires, Argentina",
         uid: "ChIJX-EuSFCcvJURKIUuJxfjoCQ"
-      };
+      }];
 
       jest.spyOn(service, 'searchHotels').mockResolvedValue(expectedResult);
 

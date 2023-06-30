@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { Injectable } from '@nestjs/common';
+import { ExternalHotel } from '../interfaces/./hotels.interface'
 import { serializeSearchResponse } from '../serializer/external-search.serializer';
 
 @Injectable()
@@ -8,7 +9,7 @@ export class ExternalSearchService {
   private readonly GOOGLE_PLACES_API_URL = 'https://maps.googleapis.com/maps/api/place'
 
   // https://maps.googleapis.com/maps/api/place/textsearch/output?parameters
-  async searchHotels(hotelName: string, address = null): Promise<any> {
+  async searchHotels(hotelName: string, address = null): Promise<ExternalHotel[]> {
     const baseUrl = `${this.GOOGLE_PLACES_API_URL}/textsearch/json`;
 
     const qs = address ? hotelName + address : hotelName;
