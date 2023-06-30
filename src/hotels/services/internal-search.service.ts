@@ -26,7 +26,6 @@ export class InternalSearchService {
 
     const hotelDocuments: HotelDocument[] = await this.hotelModel.find(query).populate('images').exec();
     const serializedResponse = serializeFindAllResponse(hotelDocuments);
-
     return serializedResponse;
   }
 }

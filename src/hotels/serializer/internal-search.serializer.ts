@@ -18,5 +18,7 @@ function serializeInternalHotel (hotel: HotelDocument): InternalHotel {
 };
 
 export function serializeFindAllResponse(internalSearchResponse: HotelDocument[]): InternalHotel[] {
-  return internalSearchResponse.map(serializeInternalHotel);
+  console.log('internal search response: ', internalSearchResponse)
+  const serialized = internalSearchResponse.length > 0 ? internalSearchResponse.map(serializeInternalHotel) : [];
+  return serialized;
 }
