@@ -1,5 +1,5 @@
 import { Injectable, LoggerService as CommonLoggerService } from '@nestjs/common';
-import { Request } from 'express'
+import { Request, Response } from 'express'
 
 @Injectable()
 export class LoggerService implements CommonLoggerService {
@@ -15,8 +15,8 @@ export class LoggerService implements CommonLoggerService {
   }
 
   logRequest(request: Request) {
-    const { method, params, query, baseUrl } = request;
-    // @@ TODO: Improve logger and add private function for formatLogRequest
-    this.log(`${method} ${baseUrl} - params: ${Object.values(params)}, q: ${JSON.stringify(query)}`);
+    const { method, query, originalUrl } = request;
+    const optionalQueryLog = `${Object.values(query).length > 0 ? `, q: ${JSON.stringify(query)}` : ''}`;
+    this.log(`${method} ${originalUrl} ${optionalQueryLog}`);
   }
 }

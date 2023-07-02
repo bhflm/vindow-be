@@ -84,7 +84,7 @@ describe('InternalSearchService', () => {
       expect(hotelModel.find).toHaveBeenCalledWith({ name: { $regex: new RegExp('someHotel', 'i') } });
     });
 
-    it.only('should return an array of InternalHotel when address is provided', async () => {
+    it('should return an array of InternalHotel when address is provided', async () => {
       const mockId = new Types.ObjectId();
 
       const mockHotelA = {
