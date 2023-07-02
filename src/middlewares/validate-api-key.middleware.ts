@@ -1,4 +1,4 @@
-import { Injectable, NestMiddleware, BadRequestException, HttpException, HttpStatus } from '@nestjs/common'
+import { Injectable, NestMiddleware, HttpException, HttpStatus } from '@nestjs/common'
 import { Request, Response, NextFunction } from 'express'
 
 const X_API_KEY_HEADER = 'x-api-key';
@@ -21,7 +21,6 @@ export class ValidateAPIKey implements NestMiddleware {
       }
 
       if (!this.isValidAPIKey(APIKey)) {
-         // @@TODO: Refactor errors module
          throw new HttpException(`'${X_API_KEY_HEADER}' is not valid`, HttpStatus.UNAUTHORIZED);
       }
 

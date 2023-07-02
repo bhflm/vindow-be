@@ -1,5 +1,5 @@
 import { MiddlewareConsumer,  Module, NestModule } from '@nestjs/common';
-import { ValidateAPIKey } from 'src/middlewares/validate-api-key.middleware';
+import { ValidateAPIKey } from '../middlewares/validate-api-key.middleware';
 import { ExternalSearchController } from './controllers/external-search.controller';
 import { InternalSearchController } from './controllers/internal-search.controller';
 import { ExternalSearchService } from './services/external-search.service';
