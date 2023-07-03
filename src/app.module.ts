@@ -1,6 +1,7 @@
 import { Module, MiddlewareConsumer } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { HealthModule } from './health/health.module';
 import { HotelsModule } from './hotels/hotels.module';
 import { LoggerModule } from './logger/logger.module';
 import { RequestLoggerMiddleware } from './middlewares/request-logger.middleware';
@@ -13,7 +14,8 @@ ConfigModule.forRoot();
   imports: [
     MongooseModule.forRoot(globalCfg.db.MONGODB_URL),
     HotelsModule,
-    LoggerModule
+    LoggerModule,
+    HealthModule
   ],
   controllers: [],
   providers: [RequestLoggerMiddleware],
