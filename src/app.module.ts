@@ -4,15 +4,14 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { HotelsModule } from './hotels/hotels.module';
 import { LoggerModule } from './logger/logger.module';
 import { RequestLoggerMiddleware } from './middlewares/request-logger.middleware';
+import { globalCfg } from '../config/index';
 
 // Load env
 ConfigModule.forRoot();
 
-const MONGODB_URL = process.env.MONGODB_URL || 'mongodb://127.0.0.1:27017/';
-
 @Module({
   imports: [
-    MongooseModule.forRoot(MONGODB_URL),
+    MongooseModule.forRoot(globalCfg.db.MONGODB_URL),
     HotelsModule,
     LoggerModule
   ],
