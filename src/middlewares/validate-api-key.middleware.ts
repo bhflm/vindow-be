@@ -1,5 +1,9 @@
 import { Injectable, NestMiddleware, HttpException, HttpStatus } from '@nestjs/common'
 import { Request, Response, NextFunction } from 'express'
+import { 
+   MissingAPIKeyErrorMessage,
+   InvalidAPIKeyErrorMessage
+ } from '../errors/constants';
 
 const X_API_KEY_HEADER = 'x-api-key';
 const SECRET_API_KEY_VALIDATION = 'VindowTravel';
@@ -17,11 +21,11 @@ export class ValidateAPIKey implements NestMiddleware {
 
 
       if (!APIKey) {
-         throw new HttpException(`'${X_API_KEY_HEADER}' is missing`, HttpStatus.UNAUTHORIZED);
+         throw new HttpException(MissingAPIKeyErrorMessage, HttpStatus.UNAUTHORIZED);
       }
 
       if (!this.isValidAPIKey(APIKey)) {
-         throw new HttpException(`'${X_API_KEY_HEADER}' is not valid`, HttpStatus.UNAUTHORIZED);
+         throw new HttpException(InvalidAPIKeyErrorMessage, HttpStatus.UNAUTHORIZED);
       }
 
       next();

@@ -17,7 +17,7 @@ export class InternalSearchService {
   ) {}
 
   async findAll(name: string, address?: string): Promise<InternalHotel[]> {
-
+    
     const query: QueryFilter<Hotel> =  { name: { $regex: new RegExp(name, 'i') } };
 
     if (address) {
