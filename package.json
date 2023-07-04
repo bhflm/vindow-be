@@ -22,7 +22,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "db:seed": "ts-node seeds/seed.ts",
-    "zip": "npm run build && zip -r Vindow-Nestjs-deploy.zip . -x 'node_modules/*'"
+    "zip": "npm run build && zip -r Vindow-Nestjs-deploy.zip dist src seeds infra config tsconfig.json package.json pnpm-lock.yaml"
   },
   "dependencies": {
     "@nestjs/axios": "^3.0.0",

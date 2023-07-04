@@ -1,72 +1,47 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+## Vindow API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Present code is a proposal of how to tackle the technical assessment for the backend position. 
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Install requirements 
 
-## Description
+- npm 9.5.1
+- pnpm 7.17.0 (app uses pnpm as package manager)
+- docker (for running image and compose)
+- mongodb version v6.0.6
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### Before running 
 
-## Installation
+For running the application properly without any errors, there're a couple of environment variables needed previously, provided at `.env.sample`. Please don't hesitate reaching out for such values.
 
-```bash
-$ pnpm install
-```
+Also, for other tasks such as deploying the application through `aws-cdk`, you'd need an aws username (`AWS_ACCESS_KEY` and `AWS_SECRET_ACCESS_KEY`) configured correctly within your cli.
 
-## Running the app
+### How to run:
+
+For running it locally, you need to have at least a `mongodb community` edition installed, and running on its default port. 
+
+Once mongo is running locally, you'd need for consistency and running tests, to run the script `pnpm run db:seed`, which will load the database with initial data for testing purposes. 
+
+Finally, you can run `pnpm run start:dev` which will start the development server in watch mode. 
+
+------
+
+Alternatively, prefered way is to build the docker image and run docker compose, which will run the server and mongodb inside a docker image.
+
+From the root directory, run: 
 
 ```bash
-# development
-$ pnpm run start
-
-# watch mode
-$ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
+docker image build .
+docker compose up
 ```
 
-## Test
+### Testing 
 
-```bash
-# unit tests
-$ pnpm run test
+For running the whole test suites, run: 
+`pnpm run tests`
 
-# e2e tests
-$ pnpm run test:e2e
+### Swagger (OPEN API)
 
-# test coverage
-$ pnpm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+For quick glimpse of endpoints and its documentation, please make sure the server is running and then access to the `{serverUrl}:/api` endpoint.
 
 ## License
 
