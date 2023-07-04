@@ -59,6 +59,10 @@ cdk deploy
 
 That should deploy a new version of the elastic beanstalk application. 
 
+* _some notes and improvements proposals:_ 
+
+- For cdk, I did face some issues and had to ssh into the ec2 instance in order to run manually some scripts and set up a mongo db running. Also, some security rules for the eb loadbalancer and ec could be added through the cdk stack, in order not to manually attach them and make it automated.
+
 ## License
 
 Nest is [MIT licensed](LICENSE).
