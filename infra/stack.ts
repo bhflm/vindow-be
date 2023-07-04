@@ -37,7 +37,11 @@ export class CDKNestStack extends CDK.Stack {
   });
 
   const managedPolicy = IAM.ManagedPolicy.fromAwsManagedPolicyName('AWSElasticBeanstalkWebTier')
+  const connectToEc2Instance = IAM.ManagedPolicy.fromAwsManagedPolicyName('AmazonSSMManagedInstanceCore');
+  
   ec2Role.addManagedPolicy(managedPolicy);
+  ec2Role.addManagedPolicy(connectToEc2Instance);
+  
   const myProfileName = `${appName}-InstanceProfile`;
 
   const instanceProfile = new IAM.CfnInstanceProfile(this, myProfileName, {
