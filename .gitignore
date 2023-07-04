@@ -1,6 +1,5 @@
 dist/*
 node_modules/*
-.DS_Store
 .env
 
 *.js
@@ -10,3 +9,6 @@ node_modules/*
 # CDK asset staging directory
 .cdk.staging
 cdk.out
+
+*.zip
+.DS_Store

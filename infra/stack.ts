@@ -67,11 +67,6 @@ export class CDKNestStack extends CDK.Stack {
       namespace: 'aws:ec2:instances',
       optionName: 'InstanceTypes',
       value: 't2.micro',
-  },
-  {
-    namespace: 'aws:elasticbeanstalk:application:environment',
-    optionName: 'HEALTH_CHECK_URL',
-    value: '/health',
   }
   ];
 
