@@ -43,6 +43,22 @@ For running the whole test suites, run:
 
 For quick glimpse of endpoints and its documentation, please make sure the server is running and then access to the `{serverUrl}:/api` endpoint.
 
+### CDK 
+
+* Please make sure to have a proper user with permissions set on your CLI before running.
+
+AWS CDK is used to deploy the application as an Elastic Beanstalk app. In order to run it make sure to already have a CDKToolkit created on CloudFormation. If not, please run `cdk bootstrap` before everything. 
+
+In order to deploy the application with the latest changes, please run the following: 
+
+```bash 
+pnpm run zip // will compress the app
+cdk synth // checks previously if the cloudformation template is ok, if not errors will arise here, similar to a build process
+cdk deploy
+```
+
+That should deploy a new version of the elastic beanstalk application. 
+
 ## License
 
 Nest is [MIT licensed](LICENSE).
