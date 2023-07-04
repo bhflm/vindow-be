@@ -93,7 +93,7 @@ describe('AppController (Integration)', () => {
       it('should return array of hotels with address without query', async () => {
         const response = await request(app.getHttpServer())
         .get('/hotels/internal-search/sheraton')
-        .set(validAPIKeyHeader)
+        .set(validAPIKeyHeader);
         expect(Array.isArray(response.body)).toBe(true);
         expect(response.body.length).toBeGreaterThan(0);
       });
